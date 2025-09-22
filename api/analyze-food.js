@@ -27,7 +27,7 @@ export default async function handler(req, res) {
     // Note: Vercel uses both VITE_ prefixed and non-prefixed vars
     const apiKey = process.env.VITE_CLAUDE_API_KEY || process.env.CLAUDE_API_KEY;
     // Hardcode the working model for now
-    const model = 'claude-3-haiku-20240307';
+    const model = 'claude-sonnet-4-20250514';
 
     console.log('Environment check:', {
       hasApiKey: !!apiKey,
