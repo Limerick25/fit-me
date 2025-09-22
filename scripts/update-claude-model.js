@@ -16,8 +16,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const KNOWN_LATEST_MODELS = {
-  'opus': 'claude-3-opus-20240229',
-  'sonnet': 'claude-3-5-sonnet-20241022',
+  'opus': 'claude-opus-4-1-20250805',
+  'sonnet': 'claude-sonnet-4-20250514',
   'haiku': 'claude-3-5-haiku-20241022'
 };
 

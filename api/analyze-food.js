@@ -25,7 +25,13 @@ export default async function handler(req, res) {
   try {
     // Get Claude API key from environment variables
     const apiKey = process.env.VITE_CLAUDE_API_KEY;
-    const model = process.env.VITE_CLAUDE_MODEL || 'claude-3-sonnet-20240229';
+    const model = process.env.VITE_CLAUDE_MODEL || 'claude-3-haiku';
+
+    console.log('Environment check:', {
+      hasApiKey: !!apiKey,
+      model: model,
+      rawModel: process.env.VITE_CLAUDE_MODEL
+    });
 
     if (!apiKey) {
       return res.status(500).json({
@@ -67,11 +73,17 @@ export default async function handler(req, res) {
 
     if (!claudeResponse.ok) {
       const errorText = await claudeResponse.text();
-      console.error('Claude API Error:', claudeResponse.status, errorText);
+      console.error('Claude API Error:', {
+        status: claudeResponse.status,
+        model: model,
+        apiKey: apiKey ? 'present' : 'missing',
+        errorText: errorText
+      });
       return res.status(claudeResponse.status).json({
         error: 'Claude API Error',
         details: errorText,
-        status: claudeResponse.status
+        status: claudeResponse.status,
+        modelUsed: model
       });
     }
 
