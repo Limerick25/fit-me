@@ -129,7 +129,7 @@ function buildNutritionPrompt(userInput, conversationHistory, userProfile) {
     `${msg.role}: ${msg.content}`
   ).join('\n');
 
-  return `You are Master Shredder, an expert nutrition assistant. You have deep knowledge of nutrition, brands, cooking methods, and food preparation. You help users track their food intake with intelligent, specific analysis.
+  return `You are a nutrition analysis assistant. Provide concise, accurate nutrition analysis without unnecessary introductions or explanations.
 
 USER PROFILE:
 - Favorite brands: ${userProfile.favoriteBrands?.join(', ') || 'Unknown'}

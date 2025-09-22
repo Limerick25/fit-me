@@ -49,11 +49,11 @@ const NutritionChatProduction = ({ mealType, onMealConfirmed, onCancel }: Nutrit
   const [claudeService] = useState(() => new ClaudeNutritionServiceProduction());
 
   useEffect(() => {
-    // Initialize with welcome message
+    // Initialize with simple prompt
     const initialMessage: ChatMessage = {
       id: Date.now().toString(),
       role: 'assistant',
-      content: `Hi! I'm Master Shredder, your AI nutrition assistant powered by Claude. Tell me about your ${mealType} - what did you eat? I'll analyze it with real nutrition expertise and show you my specific assumptions!`,
+      content: `What did you eat for ${mealType}?`,
       timestamp: new Date()
     };
     setMessages([initialMessage]);
