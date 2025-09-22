@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Dashboard from './components/Dashboard';
 import MealSection from './components/MealSection';
 import NutritionChatInteractive from './components/NutritionChatInteractive';
+import NutritionChatProduction from './components/NutritionChatProduction';
 import ErrorBoundary from './components/ErrorBoundary';
 import './styles/App.css';
 
@@ -118,7 +119,7 @@ function App() {
             </div>
           </div>
         }>
-          <NutritionChatInteractive
+          <NutritionChatProduction
             mealType={showMealEntry.mealType}
             onMealConfirmed={(meal) => handleMealConfirmed(showMealEntry.mealType!, meal)}
             onCancel={closeMealEntry}
