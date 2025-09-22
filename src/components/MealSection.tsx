@@ -65,62 +65,7 @@ const MealSection = ({ title, mealType, entries, onAddFood, onDeleteEntry, onUpd
                 </span>
               </div>
 
-              {editingEntry === entry.id ? (
-                <div className="food-nutrition-edit">
-                  <div className="nutrition-edit-form">
-                    <div className="nutrition-edit-row">
-                      <label className="nutrition-edit-label">Calories:</label>
-                      <input
-                        type="number"
-                        value={editValues.calories}
-                        onChange={(e) => setEditValues(prev => ({ ...prev, calories: parseInt(e.target.value) || 0 }))}
-                        className="nutrition-edit-input"
-                      />
-                    </div>
-                    <div className="nutrition-edit-row">
-                      <label className="nutrition-edit-label">Protein:</label>
-                      <input
-                        type="number"
-                        step="0.1"
-                        value={editValues.protein}
-                        onChange={(e) => setEditValues(prev => ({ ...prev, protein: parseFloat(e.target.value) || 0 }))}
-                        className="nutrition-edit-input"
-                      />
-                      <span className="nutrition-unit">g</span>
-                    </div>
-                    <div className="nutrition-edit-row">
-                      <label className="nutrition-edit-label">Carbs:</label>
-                      <input
-                        type="number"
-                        step="0.1"
-                        value={editValues.carbs}
-                        onChange={(e) => setEditValues(prev => ({ ...prev, carbs: parseFloat(e.target.value) || 0 }))}
-                        className="nutrition-edit-input"
-                      />
-                      <span className="nutrition-unit">g</span>
-                    </div>
-                    <div className="nutrition-edit-row">
-                      <label className="nutrition-edit-label">Fats:</label>
-                      <input
-                        type="number"
-                        step="0.1"
-                        value={editValues.fats}
-                        onChange={(e) => setEditValues(prev => ({ ...prev, fats: parseFloat(e.target.value) || 0 }))}
-                        className="nutrition-edit-input"
-                      />
-                      <span className="nutrition-unit">g</span>
-                    </div>
-                  </div>
-                  <div className="edit-actions">
-                    <button className="save-btn" onClick={() => saveEdits(entry.id)}>
-                      💾 Save
-                    </button>
-                    <button className="cancel-btn" onClick={cancelEditing}>
-                      ✗ Cancel
-                    </button>
-                  </div>
-                </div>
-              ) : (
+              {editingEntry === entry.id ? null : (
                 <div className="food-nutrition">
                   <span className="food-calories">{entry.nutrition.calories} cal</span>
                   <div className="entry-actions">
@@ -137,6 +82,77 @@ const MealSection = ({ title, mealType, entries, onAddFood, onDeleteEntry, onUpd
       <button className="add-food-btn" onClick={onAddFood}>
         + Add Food
       </button>
+
+      {editingEntry && (
+        <div className="edit-overlay">
+          <div className="edit-modal">
+            <div className="edit-header">
+              <h3>Edit Nutrition Values</h3>
+              <div className="editing-meal-info">
+                {entries.find(e => e.id === editingEntry)?.name}
+              </div>
+            </div>
+
+            <div className="nutrition-edit-form-fullscreen">
+              <div className="nutrition-edit-row-fullscreen">
+                <label className="nutrition-edit-label-fullscreen">Calories:</label>
+                <input
+                  type="number"
+                  value={editValues.calories}
+                  onChange={(e) => setEditValues(prev => ({ ...prev, calories: parseInt(e.target.value) || 0 }))}
+                  className="nutrition-edit-input-fullscreen"
+                />
+                <span className="nutrition-unit-fullscreen">cal</span>
+              </div>
+
+              <div className="nutrition-edit-row-fullscreen">
+                <label className="nutrition-edit-label-fullscreen">Protein:</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  value={editValues.protein}
+                  onChange={(e) => setEditValues(prev => ({ ...prev, protein: parseFloat(e.target.value) || 0 }))}
+                  className="nutrition-edit-input-fullscreen"
+                />
+                <span className="nutrition-unit-fullscreen">g</span>
+              </div>
+
+              <div className="nutrition-edit-row-fullscreen">
+                <label className="nutrition-edit-label-fullscreen">Carbs:</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  value={editValues.carbs}
+                  onChange={(e) => setEditValues(prev => ({ ...prev, carbs: parseFloat(e.target.value) || 0 }))}
+                  className="nutrition-edit-input-fullscreen"
+                />
+                <span className="nutrition-unit-fullscreen">g</span>
+              </div>
+
+              <div className="nutrition-edit-row-fullscreen">
+                <label className="nutrition-edit-label-fullscreen">Fats:</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  value={editValues.fats}
+                  onChange={(e) => setEditValues(prev => ({ ...prev, fats: parseFloat(e.target.value) || 0 }))}
+                  className="nutrition-edit-input-fullscreen"
+                />
+                <span className="nutrition-unit-fullscreen">g</span>
+              </div>
+            </div>
+
+            <div className="edit-actions-fullscreen">
+              <button className="save-btn-fullscreen" onClick={() => saveEdits(editingEntry)}>
+                💾 Save Changes
+              </button>
+              <button className="cancel-btn-fullscreen" onClick={cancelEditing}>
+                ✗ Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
