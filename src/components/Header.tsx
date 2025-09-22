@@ -1,4 +1,4 @@
-import MasterShredderLogo from './MasterShredderLogo';
+import FitMeLogo from './FitMeLogo';
 
 interface HeaderProps {
   currentDate: Date;
@@ -19,8 +19,8 @@ const Header = ({ currentDate, onDateChange }: HeaderProps) => {
     <header className="header">
       <div className="header-content">
         <div className="app-title-container">
-          <MasterShredderLogo size={50} className="app-logo" />
-          <h1 className="app-title">Master Shredder</h1>
+          <FitMeLogo size={50} className="app-logo" />
+          <h1 className="app-title">Fit Me</h1>
         </div>
         <div className="date-picker">
           <label htmlFor="date-input">Date:</label>

@@ -1,8 +1,8 @@
-# 🥗 Master Shredder ⚡
+# 💪 Fit Me ⚡
 
 AI-powered nutrition tracking with conversational food analysis using Claude Sonnet 4. **LIVE & FULLY FUNCTIONAL!** 🌐
 
-**🎉 Try it now: [master-shredder.vercel.app](https://master-shredder.vercel.app)**
+**🎉 Try it now: [fit-me.vercel.app](https://fit-me.vercel.app)**
 
 ## 🚀 Features
 
@@ -40,8 +40,8 @@ AI-powered nutrition tracking with conversational food analysis using Claude Son
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/master-shredder.git
-cd master-shredder
+git clone https://github.com/yourusername/fit-me.git
+cd fit-me
 
 # Install dependencies
 npm install
@@ -163,8 +163,8 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 - [Claude AI Documentation](https://docs.anthropic.com/)
 - [Project Documentation](CLAUDE.md)
-- [GitHub Repository](https://github.com/Limerick25/master-shredder)
-- [Live App](https://master-shredder.vercel.app) ✅ **LIVE NOW!**
+- [GitHub Repository](https://github.com/Limerick25/fit-me)
+- [Live App](https://fit-me.vercel.app) ✅ **LIVE NOW!**
 
 ---
 

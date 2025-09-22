@@ -1,8 +1,8 @@
-# Master Shredder Project
+# Fit Me Project
 
 ## 🎯 PROJECT OVERVIEW
 
-**Master Shredder** is an AI-powered nutrition tracking web application that uses Claude AI to analyze food descriptions through natural language conversation.
+**Fit Me** is an AI-powered nutrition tracking web application that uses Claude AI to analyze food descriptions through natural language conversation.
 
 **Current Status**: ✅ **LIVE IN PRODUCTION** - https://master-shredder.vercel.app
 
@@ -10,7 +10,7 @@
 
 ## 🌐 LIVE DEPLOYMENT
 
-**Production URL**: https://master-shredder.vercel.app
+**Production URL**: https://fit-me.vercel.app
 **Status**: ✅ Live and ready for use
 **Auto-deploys**: Every GitHub push triggers new deployment
 **Claude AI**: ✅ Working with real API integration
@@ -369,6 +369,17 @@
 
 **Auto-committed**: Changes automatically backed up to GitHub
 
+### Auto-Update - 2025-09-22
+**Files Changed**: 6 files
+- `CLAUDE.md`
+- `README.md`
+- `index.html`
+- `package.json`
+- `src/components/FitMeLogo.tsx`
+- `src/components/Header.tsx`
+
+**Auto-committed**: Changes automatically backed up to GitHub
+
 ---
 
 ## 🏗️ CURRENT ARCHITECTURE
@@ -407,7 +418,7 @@ VITE_CLAUDE_MODEL=claude-3-sonnet-20240229
 ## 🚀 HOW TO RUN LOCALLY
 
 ```bash
-cd /Users/matthewlimeri/coderepo/master-shredder
+cd /Users/matthewlimeri/coderepo/fit-me
 npm run dev
 # Open http://localhost:5173
 ```
