@@ -985,6 +985,62 @@ body {
   box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
 }
 
+/* Sources Section */
+.sources-section {
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.sources-section h5 {
+  margin-bottom: 0.75rem;
+  color: #2c5aa0;
+}
+
+.sources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.source-item {
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid #667eea;
+}
+
+.source-link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+  transition: color 0.2s;
+}
+
+.source-link:hover {
+  color: #5a6fd8;
+  text-decoration: underline;
+}
+
+.source-description {
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.source-note {
+  color: #856404;
+  font-size: 0.8rem;
+  font-style: italic;
+  background: #fff3cd;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  border: 1px solid #ffeaa7;
+}
+
 .edit-actions {
   margin-top: 1rem;
   padding-top: 1rem;
