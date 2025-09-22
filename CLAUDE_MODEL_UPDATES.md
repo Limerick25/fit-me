@@ -4,13 +4,14 @@ This guide ensures your Master Shredder app always uses the latest and most powe
 
 ## 🎯 Current Setup
 
-**Current Model**: `claude-opus-4-1-20250805` (Claude Opus 4.1 - Latest & Most Powerful)
+**Current Model**: `claude-3-5-sonnet-20241022` (Claude 3.5 Sonnet - Latest Available)
 
-**Why Opus 4.1?**
-- 🧠 Most intelligent model available
-- 🔥 Best coding performance (74.5% on SWE-bench)
-- ⚡ Hybrid mode: Fast responses + deep reasoning
+**Why Claude 3.5 Sonnet?**
+- 🧠 Most capable model currently available via API
+- 🔥 Excellent performance on complex reasoning tasks
+- ⚡ Fast response times with high intelligence
 - 📊 Superior nutrition analysis capabilities
+- ✅ Proven reliability and availability
 
 ## ⚡ Auto-Update Commands
 
