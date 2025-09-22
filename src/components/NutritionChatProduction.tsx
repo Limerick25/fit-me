@@ -133,18 +133,6 @@ const NutritionChatProduction = ({ mealType, onMealConfirmed, onCancel }: Nutrit
     }));
   };
 
-  const handleAssumptionEdit = (messageId: string, index: number, newAssumption: string) => {
-    setMessages(prev => prev.map(msg => {
-      if (msg.id === messageId && msg.meal) {
-        const updatedAssumptions = [...msg.meal.assumptions];
-        updatedAssumptions[index] = newAssumption;
-        const updatedMeal = { ...msg.meal, assumptions: updatedAssumptions };
-        setSuggestedMeal(updatedMeal);
-        return { ...msg, meal: updatedMeal };
-      }
-      return msg;
-    }));
-  };
 
   const toggleEditMode = (messageId: string) => {
     setMessages(prev => prev.map(msg => {
@@ -279,16 +267,7 @@ const NutritionChatProduction = ({ mealType, onMealConfirmed, onCancel }: Nutrit
                       <div className="assumptions-list">
                         {message.meal.assumptions.map((assumption, index) => (
                           <div key={index} className="assumption-item">
-                            {message.isEditing ? (
-                              <input
-                                type="text"
-                                value={assumption}
-                                onChange={(e) => handleAssumptionEdit(message.id, index, e.target.value)}
-                                className="assumption-input"
-                              />
-                            ) : (
-                              <span className="assumption-text">• {assumption}</span>
-                            )}
+                            <span className="assumption-text">• {assumption}</span>
                           </div>
                         ))}
                       </div>

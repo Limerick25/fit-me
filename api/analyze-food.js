@@ -144,8 +144,8 @@ CURRENT USER INPUT: "${userInput}"
 TASK: Analyze this food description with expert nutrition knowledge. Make intelligent, specific assumptions about:
 - Exact portion sizes (with weights/measurements)
 - Specific brands (especially popular ones like Chobani, Dannon, etc.)
-- Cooking methods and hidden ingredients (oils, seasonings, etc.)
-- Preparation details that affect nutrition
+- Added ingredients that affect nutrition (oils, butter, seasonings, etc.)
+- Preparation methods that change nutritional content (fried vs baked, added fats, etc.)
 
 Respond in this EXACT JSON format (no markdown, just JSON):
 {
@@ -158,9 +158,9 @@ Respond in this EXACT JSON format (no markdown, just JSON):
     "fats": number,
     "confidence": 0.0-1.0,
     "assumptions": [
-      "Specific assumption with brand/quantity (e.g., 'Assuming 1 cup (227g) Chobani Plain Nonfat Greek Yogurt')",
-      "Another specific assumption with reasoning",
-      "Include cooking oils, seasonings, preparation methods"
+      "Specific portion with brand/quantity (e.g., 'Assuming 1 cup (227g) Chobani Plain Nonfat Greek Yogurt')",
+      "Added fats/oils that affect calories (e.g., '1 tsp olive oil for cooking adds 40 calories')",
+      "Nutritionally significant ingredients only (avoid cooking techniques that don't change nutrition)"
     ],
     "sources": [
       {
@@ -188,7 +188,7 @@ Respond in this EXACT JSON format (no markdown, just JSON):
   }
 }
 
-Make your assumptions HIGHLY SPECIFIC and ACTIONABLE. Instead of "average portion" say "1 cup (227g)". Instead of "cooking oil" say "1 tsp olive oil". Be the nutrition expert users need!`;
+Make your assumptions HIGHLY SPECIFIC and NUTRITION-FOCUSED. Instead of "average portion" say "1 cup (227g)". Instead of "cooking oil" say "1 tsp olive oil (40 calories)". Focus ONLY on assumptions that affect nutritional content - avoid cooking techniques that don't change calories, protein, carbs, or fats. Be the nutrition expert users need!`;
 }
 
 function parseClaudeResponse(content) {
