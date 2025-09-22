@@ -149,7 +149,7 @@ TASK: Analyze this food description with expert nutrition knowledge. Make intell
 
 Respond in this EXACT JSON format (no markdown, just JSON):
 {
-  "response": "Conversational response explaining your analysis",
+  "response": "Brief analysis summary (1-2 sentences max)",
   "meal": {
     "name": "Specific meal name",
     "calories": number,
