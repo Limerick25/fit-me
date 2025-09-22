@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { DailyMeals, FoodEntry, MealType } from './types/nutrition';
 import { ParsedMeal } from './types/conversation';
-import { getStoredMeals, addFoodEntry } from './utils/storage';
+import { getStoredMeals, addFoodEntry, removeFoodEntry, updateFoodEntry } from './utils/storage';
 import { calculateDailyNutrition, formatDate, generateId } from './utils/calculations';
 import Header from './components/Header';
 import Dashboard from './components/Dashboard';
@@ -62,6 +62,18 @@ function App() {
     setShowMealEntry({ show: false, mealType: null });
   };
 
+  const handleDeleteEntry = (mealType: MealType, entryId: string) => {
+    removeFoodEntry(dateString, mealType, entryId);
+    const updatedMeals = getStoredMeals(dateString);
+    setMeals(updatedMeals);
+  };
+
+  const handleUpdateEntry = (mealType: MealType, entryId: string, updatedEntry: Partial<FoodEntry>) => {
+    updateFoodEntry(dateString, mealType, entryId, updatedEntry);
+    const updatedMeals = getStoredMeals(dateString);
+    setMeals(updatedMeals);
+  };
+
   const dailyNutrition = calculateDailyNutrition(meals, dateString);
 
   return (
@@ -77,6 +89,8 @@ function App() {
             mealType="breakfast"
             entries={meals.breakfast}
             onAddFood={() => openMealEntry('breakfast')}
+            onDeleteEntry={(entryId) => handleDeleteEntry('breakfast', entryId)}
+            onUpdateEntry={(entryId, updatedEntry) => handleUpdateEntry('breakfast', entryId, updatedEntry)}
           />
 
           <MealSection
@@ -84,6 +98,8 @@ function App() {
             mealType="lunch"
             entries={meals.lunch}
             onAddFood={() => openMealEntry('lunch')}
+            onDeleteEntry={(entryId) => handleDeleteEntry('lunch', entryId)}
+            onUpdateEntry={(entryId, updatedEntry) => handleUpdateEntry('lunch', entryId, updatedEntry)}
           />
 
           <MealSection
@@ -91,6 +107,8 @@ function App() {
             mealType="dinner"
             entries={meals.dinner}
             onAddFood={() => openMealEntry('dinner')}
+            onDeleteEntry={(entryId) => handleDeleteEntry('dinner', entryId)}
+            onUpdateEntry={(entryId, updatedEntry) => handleUpdateEntry('dinner', entryId, updatedEntry)}
           />
 
           <MealSection
@@ -98,6 +116,8 @@ function App() {
             mealType="snacks"
             entries={meals.snacks}
             onAddFood={() => openMealEntry('snacks')}
+            onDeleteEntry={(entryId) => handleDeleteEntry('snacks', entryId)}
+            onUpdateEntry={(entryId, updatedEntry) => handleUpdateEntry('snacks', entryId, updatedEntry)}
           />
         </div>
       </main>

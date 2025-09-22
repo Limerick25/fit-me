@@ -64,9 +64,56 @@ const MealSection = ({ title, mealType, entries, onAddFood, onDeleteEntry, onUpd
                   {entry.quantity} {entry.unit}
                 </span>
               </div>
-              <div className="food-nutrition">
-                <span className="food-calories">{entry.nutrition.calories} cal</span>
-              </div>
+
+              {editingEntry === entry.id ? (
+                <div className="food-nutrition-edit">
+                  <div className="nutrition-edit-inputs">
+                    <input
+                      type="number"
+                      value={editValues.calories}
+                      onChange={(e) => setEditValues(prev => ({ ...prev, calories: parseInt(e.target.value) || 0 }))}
+                      className="nutrition-edit-input"
+                      placeholder="Cal"
+                    />
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={editValues.protein}
+                      onChange={(e) => setEditValues(prev => ({ ...prev, protein: parseFloat(e.target.value) || 0 }))}
+                      className="nutrition-edit-input"
+                      placeholder="P"
+                    />
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={editValues.carbs}
+                      onChange={(e) => setEditValues(prev => ({ ...prev, carbs: parseFloat(e.target.value) || 0 }))}
+                      className="nutrition-edit-input"
+                      placeholder="C"
+                    />
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={editValues.fats}
+                      onChange={(e) => setEditValues(prev => ({ ...prev, fats: parseFloat(e.target.value) || 0 }))}
+                      className="nutrition-edit-input"
+                      placeholder="F"
+                    />
+                  </div>
+                  <div className="edit-actions">
+                    <button className="save-btn" onClick={() => saveEdits(entry.id)}>✓</button>
+                    <button className="cancel-btn" onClick={cancelEditing}>✗</button>
+                  </div>
+                </div>
+              ) : (
+                <div className="food-nutrition">
+                  <span className="food-calories">{entry.nutrition.calories} cal</span>
+                  <div className="entry-actions">
+                    <button className="edit-entry-btn" onClick={() => startEditing(entry)}>✏️</button>
+                    <button className="delete-entry-btn" onClick={() => onDeleteEntry(entry.id)}>🗑️</button>
+                  </div>
+                </div>
+              )}
             </div>
           ))
         )}
