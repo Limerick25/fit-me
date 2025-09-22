@@ -44,11 +44,12 @@ body {
 }
 
 .app-logo {
+  font-size: 2.5rem;
   transition: transform 0.3s ease;
 }
 
 .app-logo:hover {
-  transform: scale(1.1) rotate(5deg);
+  transform: scale(1.2) rotate(10deg);
 }
 
 .app-title {

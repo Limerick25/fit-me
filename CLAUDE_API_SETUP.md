@@ -10,7 +10,7 @@
 5. Copy the key (starts with `sk-ant-...`)
 
 ### 2. Add API Key to Master Shredder
-1. Open the file: `/Users/matthewlimeri/coderepo/master-shredder/.env.local`
+1. Open the file: `/Users/matthewlimeri/coderepo/fit-me/.env.local`
 2. Replace `your_claude_api_key_here` with your actual API key:
 
 ```bash

@@ -1,5 +1,3 @@
-import FitMeLogo from './FitMeLogo';
-
 interface HeaderProps {
   currentDate: Date;
   onDateChange: (date: Date) => void;
@@ -19,7 +17,7 @@ const Header = ({ currentDate, onDateChange }: HeaderProps) => {
     <header className="header">
       <div className="header-content">
         <div className="app-title-container">
-          <FitMeLogo size={50} className="app-logo" />
+          <span className="app-logo">💪</span>
           <h1 className="app-title">Fit Me</h1>
         </div>
         <div className="date-picker">

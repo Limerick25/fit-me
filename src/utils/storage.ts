@@ -1,6 +1,6 @@
 import { DailyMeals, FoodEntry } from '../types/nutrition';
 
-const STORAGE_KEY = 'master-shredder-data';
+const STORAGE_KEY = 'fit-me-data';
 
 export const getStoredMeals = (date: string): DailyMeals => {
   try {

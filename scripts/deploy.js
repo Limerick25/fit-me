@@ -106,7 +106,7 @@ async function deployToVercel() {
     log('📋 Manual setup instructions:', '📋');
     console.log(`
 1. Go to https://vercel.com/new
-2. Import your GitHub repository: master-shredder
+2. Import your GitHub repository: fit-me
 3. Add these environment variables:
    - VITE_CLAUDE_API_KEY: ${envVars.VITE_CLAUDE_API_KEY ? '[Your API Key]' : 'Not found in .env.local'}
    - VITE_CLAUDE_MODEL: ${envVars.VITE_CLAUDE_MODEL || 'claude-3-sonnet-20240229'}

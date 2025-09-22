@@ -138,4 +138,4 @@ Planned enhancements for the model updater:
 
 **💡 Pro Tip**: Always test your app after model updates to ensure everything works correctly. The automation handles deployment, but manual testing ensures quality!
 
-**🌐 Test your updates**: https://master-shredder.vercel.app
+**🌐 Test your updates**: https://fit-me-nutrition.vercel.app

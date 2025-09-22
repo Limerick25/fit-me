@@ -126,7 +126,7 @@ async function deployToVercel() {
     // Provide fallback instructions
     log('📋 Fallback: Manual deployment via web interface', '💡');
     log('1. Go to https://vercel.com/new');
-    log('2. Import master-shredder repository');
+    log('2. Import fit-me repository');
     log('3. Add environment variables from .env.local');
     log('4. Click Deploy');
 

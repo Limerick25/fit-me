@@ -47,7 +47,7 @@
 
 ### Project Structure
 ```
-master-shredder/
+fit-me/
 ├── src/
 │   ├── components/          # React components
 │   │   ├── Header.tsx

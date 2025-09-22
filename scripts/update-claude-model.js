@@ -176,7 +176,7 @@ async function main() {
       updateDocumentation(currentModel, latestModel);
 
       log('🎉 Model update complete! Your app now uses the latest Claude model.', '🎉');
-      log(`💡 Test at: https://master-shredder.vercel.app`);
+      log(`💡 Test at: https://fit-me-nutrition.vercel.app`);
     }
   }
 }
