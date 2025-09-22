@@ -6,7 +6,11 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "save": "node scripts/auto-commit.js",
+    "backup": "node scripts/auto-commit.js 'Manual backup checkpoint'",
+    "commit": "node scripts/auto-commit.js",
+    "sync": "git pull origin main && node scripts/auto-commit.js 'Sync with remote changes'"
   },
   "dependencies": {
     "react": "^18.2.0",
