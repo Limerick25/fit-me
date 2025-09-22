@@ -205,6 +205,24 @@ function main() {
   if (pushResult !== null) {
     console.log('✅ Successfully backed up to GitHub!');
     console.log('🔗 Your changes are now safely stored and documented.');
+
+    // Trigger automatic deployment to Vercel
+    console.log('🚀 Triggering automatic deployment...');
+    try {
+      const deployResult = execCommand('vercel --prod --yes');
+      if (deployResult) {
+        console.log('🎉 Deployment successful! Your changes are now live.');
+
+        // Extract URL from deploy result
+        const urlMatch = deployResult.match(/(https:\/\/[^\s]+)/);
+        if (urlMatch) {
+          console.log(`🌐 Live URL: ${urlMatch[1]}`);
+        }
+      }
+    } catch (deployError) {
+      console.log('⚠️  Auto-deployment skipped. Run "npm run deploy" manually if needed.');
+      console.log('💡 Ensure you\'re logged into Vercel with "vercel login"');
+    }
   } else {
     console.log('⚠️  Push may have failed. Check your internet connection and GitHub access.');
   }

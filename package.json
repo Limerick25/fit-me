@@ -13,7 +13,10 @@
     "sync": "git pull origin main && node scripts/auto-commit.js 'Sync with remote changes'",
     "watch": "node scripts/auto-watcher.js",
     "auto": "concurrently \"npm run dev\" \"npm run watch\"",
-    "start": "npm run auto"
+    "start": "npm run auto",
+    "deploy": "node scripts/deploy.js",
+    "deploy-prod": "npm run build && vercel --prod",
+    "setup-vercel": "vercel"
   },
   "dependencies": {
     "react": "^18.2.0",
