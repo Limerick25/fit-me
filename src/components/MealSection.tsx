@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FoodEntry, MealType } from '../types/nutrition';
 
 interface MealSectionProps {
@@ -5,13 +6,44 @@ interface MealSectionProps {
   mealType: MealType;
   entries: FoodEntry[];
   onAddFood: () => void;
+  onDeleteEntry: (entryId: string) => void;
+  onUpdateEntry: (entryId: string, updatedEntry: Partial<FoodEntry>) => void;
 }
 
-const MealSection = ({ title, mealType, entries, onAddFood }: MealSectionProps) => {
+const MealSection = ({ title, mealType, entries, onAddFood, onDeleteEntry, onUpdateEntry }: MealSectionProps) => {
+  const [editingEntry, setEditingEntry] = useState<string | null>(null);
+  const [editValues, setEditValues] = useState<{ calories: number; protein: number; carbs: number; fats: number }>({
+    calories: 0,
+    protein: 0,
+    carbs: 0,
+    fats: 0
+  });
+
   const mealTotal = entries.reduce(
     (total, entry) => total + entry.nutrition.calories,
     0
   );
+
+  const startEditing = (entry: FoodEntry) => {
+    setEditingEntry(entry.id);
+    setEditValues({
+      calories: entry.nutrition.calories,
+      protein: entry.nutrition.protein,
+      carbs: entry.nutrition.carbs,
+      fats: entry.nutrition.fats
+    });
+  };
+
+  const saveEdits = (entryId: string) => {
+    onUpdateEntry(entryId, {
+      nutrition: editValues
+    });
+    setEditingEntry(null);
+  };
+
+  const cancelEditing = () => {
+    setEditingEntry(null);
+  };
 
   return (
     <div className="meal-section">

@@ -57,3 +57,12 @@ export const removeFoodEntry = (date: string, mealType: keyof DailyMeals, entryI
   meals[mealType] = meals[mealType].filter(entry => entry.id !== entryId);
   storeMeals(date, meals);
 };
+
+export const updateFoodEntry = (date: string, mealType: keyof DailyMeals, entryId: string, updatedEntry: Partial<FoodEntry>): void => {
+  const meals = getStoredMeals(date);
+  const entryIndex = meals[mealType].findIndex(entry => entry.id === entryId);
+  if (entryIndex !== -1) {
+    meals[mealType][entryIndex] = { ...meals[mealType][entryIndex], ...updatedEntry };
+    storeMeals(date, meals);
+  }
+};
