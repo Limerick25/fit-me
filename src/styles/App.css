@@ -196,11 +196,109 @@ body {
 
 .food-nutrition {
   text-align: right;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: flex-end;
 }
 
 .food-calories {
   font-weight: 500;
   color: #333;
+}
+
+/* Entry Actions */
+.entry-actions {
+  display: flex;
+  gap: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.food-entry:hover .entry-actions {
+  opacity: 1;
+}
+
+.edit-entry-btn,
+.delete-entry-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  transition: background-color 0.2s;
+}
+
+.edit-entry-btn:hover {
+  background: #e3f2fd;
+}
+
+.delete-entry-btn:hover {
+  background: #ffebee;
+}
+
+/* Edit Mode */
+.food-nutrition-edit {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.nutrition-edit-inputs {
+  display: flex;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.nutrition-edit-input {
+  width: 50px;
+  padding: 0.25rem;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.nutrition-edit-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.edit-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.save-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.save-btn:hover {
+  background: #45a049;
+}
+
+.cancel-btn {
+  background: #f44336;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: #da190b;
 }
 
 .add-food-btn {
