@@ -15,6 +15,7 @@
     "auto": "concurrently \"npm run dev\" \"npm run watch\"",
     "start": "npm run auto",
     "deploy": "node scripts/deploy.js",
+    "deploy-auto": "node scripts/vercel-auto-deploy.js",
     "deploy-prod": "npm run build && vercel --prod",
     "setup-vercel": "vercel"
   },

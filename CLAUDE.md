@@ -4,7 +4,24 @@
 
 **Master Shredder** is an AI-powered nutrition tracking web application that uses Claude AI to analyze food descriptions through natural language conversation.
 
-**Current Status**: ✅ **Working prototype with AI chat interface, ready for backend integration**
+**Current Status**: ✅ **LIVE IN PRODUCTION** - https://master-shredder.vercel.app
+
+---
+
+## 🌐 LIVE DEPLOYMENT
+
+**Production URL**: https://master-shredder.vercel.app
+**Status**: ✅ Live and ready for use
+**Auto-deploys**: Every GitHub push triggers new deployment
+**Claude AI**: ✅ Working with real API integration
+**Backend API**: ✅ Vercel serverless functions handle Claude API calls
+
+**What Works:**
+- ✅ Real Claude AI nutrition analysis (no CORS errors!)
+- ✅ Interactive editing of AI assumptions and macros
+- ✅ Natural language food input processing
+- ✅ Automatic deployments on every code change
+- ✅ Public access from any browser/device
 
 ---
 
@@ -74,6 +91,16 @@
 - `package.json`
 - `scripts/auto-commit.js`
 - `scripts/deploy.js`
+
+**Auto-committed**: Changes automatically backed up to GitHub
+
+### Auto-Update - 2025-09-22
+**Files Changed**: 5 files
+- `.gitignore`
+- `CLAUDE.md`
+- `package.json`
+- `scripts/vercel-auto-deploy.js`
+- `vercel.json`
 
 **Auto-committed**: Changes automatically backed up to GitHub
 
