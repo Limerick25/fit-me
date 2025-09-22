@@ -15,6 +15,12 @@ interface ChatMessage {
     fats: number;
     confidence: number;
     assumptions: string[];
+    sources?: Array<{
+      name: string;
+      description: string;
+      url: string;
+      note?: string;
+    }>;
     ingredients: Array<{
       name: string;
       amount: number;
@@ -269,7 +275,7 @@ const NutritionChatProduction = ({ mealType, onMealConfirmed, onCancel }: Nutrit
                     </div>
 
                     <div className="assumptions-section">
-                      <h5>🤔 Claude's Assumptions:</h5>
+                      <h5>🤔 Assumptions:</h5>
                       <div className="assumptions-list">
                         {message.meal.assumptions.map((assumption, index) => (
                           <div key={index} className="assumption-item">
@@ -287,6 +293,30 @@ const NutritionChatProduction = ({ mealType, onMealConfirmed, onCancel }: Nutrit
                         ))}
                       </div>
                     </div>
+
+                    {message.meal.sources && message.meal.sources.length > 0 && (
+                      <div className="sources-section">
+                        <h5>📚 Sources:</h5>
+                        <div className="sources-list">
+                          {message.meal.sources.map((source, index) => (
+                            <div key={index} className="source-item">
+                              <a
+                                href={source.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="source-link"
+                              >
+                                📖 {source.name}
+                              </a>
+                              <div className="source-description">{source.description}</div>
+                              {source.note && (
+                                <div className="source-note">⚠️ {source.note}</div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                     <div className="confidence-indicator">
                       <span className={`confidence ${message.meal.confidence > 0.8 ? 'high' : message.meal.confidence > 0.6 ? 'medium' : 'low'}`}>

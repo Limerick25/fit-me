@@ -160,8 +160,21 @@ Respond in this EXACT JSON format (no markdown, just JSON):
     "assumptions": [
       "Specific assumption with brand/quantity (e.g., 'Assuming 1 cup (227g) Chobani Plain Nonfat Greek Yogurt')",
       "Another specific assumption with reasoning",
-      "Include cooking oils, seasonings, preparation methods",
-      "Reference data sources (USDA, brand nutrition facts)"
+      "Include cooking oils, seasonings, preparation methods"
+    ],
+    "sources": [
+      {
+        "name": "USDA FoodData Central",
+        "description": "Nutritional data for plain nonfat Greek yogurt",
+        "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171265/nutrients",
+        "note": "Based on training data knowledge - not real-time lookup"
+      },
+      {
+        "name": "Chobani Nutrition Facts",
+        "description": "Brand-specific nutrition information",
+        "url": "https://www.chobani.com/products/",
+        "note": "Based on training data knowledge - not real-time lookup"
+      }
     ],
     "ingredients": [
       {
