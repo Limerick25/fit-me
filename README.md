@@ -40,11 +40,19 @@ cp .env.example .env.local
 VITE_CLAUDE_API_KEY=your_claude_api_key_here
 VITE_CLAUDE_MODEL=claude-3-sonnet-20240229
 
-# Start development server
-npm run dev
+# Start ZERO-EFFORT development mode (RECOMMENDED)
+npm start
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+**🎉 That's it!** The app runs at [http://localhost:5173](http://localhost:5173) and **automatically commits all your changes to GitHub** as you code!
+
+### 🤖 Zero-Effort Development
+- **Code normally** in VS Code
+- **Files auto-save** after 1 second
+- **Auto-commits** 10 seconds after you stop editing
+- **Auto-pushes** to GitHub with smart commit messages
+- **Auto-updates** documentation
+- **Never lose work again!**
 
 ## 🎯 How to Use
 
