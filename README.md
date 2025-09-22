@@ -1,19 +1,32 @@
 # 🥗 Master Shredder ⚡
 
-AI-powered nutrition tracking with conversational food analysis using Claude AI. **Now LIVE in production!** 🌐
+AI-powered nutrition tracking with conversational food analysis using Claude Sonnet 4. **LIVE & FULLY FUNCTIONAL!** 🌐
+
+**🎉 Try it now: [master-shredder.vercel.app](https://master-shredder.vercel.app)**
 
 ## 🚀 Features
 
-- **Conversational Food Entry**: Describe meals in natural language
-- **AI-Powered Analysis**: Claude AI infers ingredients, portions, and cooking methods
-- **Interactive Editing**: Modify AI assumptions and recalculate nutrition
-- **Daily Tracking**: Complete nutrition dashboard with macro tracking
-- **Responsive Design**: Works on desktop and mobile devices
+### ✅ **Production-Ready Features**
+- **🤖 Claude Sonnet 4 Integration**: Advanced AI nutrition analysis
+- **💬 Streamlined Food Entry**: Simple "What did you eat?" workflow
+- **📊 Real-time Nutrition Tracking**: Live dashboard with daily totals
+- **✏️ Full-Screen Editing**: Professional edit experience for any meal entry
+- **🗑️ Delete Functionality**: Remove meals with one click
+- **📱 Responsive Design**: Perfect on desktop, tablet, and mobile
+- **🔗 Transparent Sources**: Clear distinction between assumptions and data sources
+
+### 🧠 **AI-Powered Analysis**
+- **Smart Portion Estimation**: "1 cup (227g)" instead of "average serving"
+- **Brand Recognition**: Identifies specific brands (Chobani, Dannon, etc.)
+- **Cooking Method Detection**: Accounts for oils, seasonings, preparation
+- **Confidence Scoring**: Shows how certain the AI is about estimates
 
 ## 🛠️ Tech Stack
 
 - **Frontend**: React + TypeScript + Vite
-- **AI Integration**: Claude API (Anthropic)
+- **AI Integration**: Claude Sonnet 4 (Anthropic) via Vercel serverless functions
+- **Deployment**: Vercel with automatic GitHub integration
+- **Backend**: Vercel serverless functions (solves CORS, secures API keys)
 - **Styling**: Modern CSS with responsive design
 - **Data**: Local storage (browser-based)
 
@@ -91,10 +104,11 @@ src/
 ```
 
 ### Key Files
-- `src/components/NutritionChatInteractive.tsx` - Main AI chat interface
-- `src/services/claudeNutritionService.ts` - Claude API integration
-- `src/utils/storage.ts` - Local storage management
-- `CLAUDE.md` - Detailed project documentation
+- `src/components/NutritionChatProduction.tsx` - Production AI chat interface
+- `src/components/MealSection.tsx` - Meal display with edit/delete functionality
+- `api/analyze-food.js` - Vercel serverless function for Claude API
+- `src/utils/storage.ts` - Local storage management with CRUD operations
+- `CLAUDE.md` - Comprehensive project documentation
 
 ### Available Scripts
 
