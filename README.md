@@ -140,6 +140,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 - [Claude AI Documentation](https://docs.anthropic.com/)
 - [Project Documentation](CLAUDE.md)
+- [GitHub Repository](https://github.com/Limerick25/master-shredder)
 - [Live Demo](https://master-shredder.vercel.app) (Coming Soon)
 
 ---
