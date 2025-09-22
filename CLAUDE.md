@@ -4,13 +4,13 @@
 
 **Fit Me** is an AI-powered nutrition tracking web application that uses Claude AI to analyze food descriptions through natural language conversation.
 
-**Current Status**: ✅ **LIVE IN PRODUCTION** - https://master-shredder.vercel.app
+**Current Status**: ✅ **LIVE IN PRODUCTION** - https://fit-me-nutrition.vercel.app
 
 ---
 
 ## 🌐 LIVE DEPLOYMENT
 
-**Production URL**: https://fit-me.vercel.app
+**Production URL**: https://fit-me-nutrition.vercel.app
 **Status**: ✅ Live and ready for use
 **Auto-deploys**: Every GitHub push triggers new deployment
 **Claude AI**: ✅ Working with real API integration
@@ -298,7 +298,7 @@
 - ✅ **Sources Section**: Separated from assumptions with clickable links (transparency about training data vs real-time lookup)
 
 **Claude AI Integration Status:**
-- ✅ **Working in Production**: https://master-shredder.vercel.app fully functional
+- ✅ **Working in Production**: https://fit-me-nutrition.vercel.app fully functional
 - ✅ **Model**: claude-sonnet-4-20250514 (most advanced available)
 - ✅ **Nutrition Analysis**: Accurate calorie, protein, carbs, fats breakdown
 - ✅ **Smart Assumptions**: Portion sizes, brands, cooking methods
@@ -377,6 +377,17 @@
 - `package.json`
 - `src/components/FitMeLogo.tsx`
 - `src/components/Header.tsx`
+
+**Auto-committed**: Changes automatically backed up to GitHub
+
+### Auto-Update - 2025-09-22
+**Files Changed**: 6 files
+- `AUTO_BACKUP_GUIDE.md`
+- `CLAUDE.md`
+- `DEPLOYMENT_GUIDE.md`
+- `README.md`
+- `VERCEL_SETUP.md`
+- `index.html`
 
 **Auto-committed**: Changes automatically backed up to GitHub
 

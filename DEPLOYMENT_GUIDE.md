@@ -1,10 +1,10 @@
 # 🚀 Vercel Deployment Guide
 
-This guide will help you deploy Master Shredder to Vercel so it's publicly accessible from any browser.
+This guide will help you deploy Fit Me to Vercel so it's publicly accessible from any browser.
 
 ## 📋 Prerequisites
 
-✅ **GitHub Repository**: https://github.com/Limerick25/master-shredder
+✅ **GitHub Repository**: https://github.com/Limerick25/fit-me
 ✅ **Claude API Key**: Your API key from Anthropic Console
 ✅ **Vercel Account**: Free account at [vercel.com](https://vercel.com)
 
@@ -18,8 +18,8 @@ This guide will help you deploy Master Shredder to Vercel so it's publicly acces
 
 ### Step 2: Import Your Project
 1. **Click "New Project"** on Vercel dashboard
-2. **Find "master-shredder"** in your GitHub repositories list
-3. **Click "Import"** next to master-shredder
+2. **Find "fit-me"** in your GitHub repositories list
+3. **Click "Import"** next to fit-me
 
 ### Step 3: Configure Project Settings
 **Framework Preset**: `Vite` (should auto-detect)
@@ -51,7 +51,7 @@ Add these **exact** variables:
 ## 🎉 Your Live App
 
 After deployment, you'll get:
-- **Live URL**: `https://master-shredder-xxx.vercel.app`
+- **Live URL**: `https://fit-me-nutrition.vercel.app`
 - **Production ready** nutrition tracking app
 - **Real Claude AI** integration working
 - **Automatic deployments** on every GitHub push

@@ -5,7 +5,7 @@
 ### Step 1: Create Vercel Account & Deploy
 1. **Go to [vercel.com/new](https://vercel.com/new)**
 2. **Sign up with GitHub** (if not already signed up)
-3. **Import `master-shredder` repository**
+3. **Import `fit-me` repository**
 
 ### Step 2: Configure Project Settings
 **Framework**: Vite ✅ (auto-detected)
@@ -26,7 +26,7 @@ Click **"Environment Variables"** and add these **exact** variables:
 ### Step 4: Deploy
 1. **Click "Deploy"**
 2. **Wait 2-3 minutes** for first deployment
-3. **Get your live URL!** (e.g., `https://master-shredder-xxx.vercel.app`)
+3. **Get your live URL!** (e.g., `https://fit-me-nutrition.vercel.app`)
 
 ## 🔄 Automatic Deployments (Already Configured!)
 

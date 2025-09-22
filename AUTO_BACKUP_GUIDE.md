@@ -166,7 +166,7 @@ Edit `scripts/auto-commit.js` → `analyzeChanges()` function
 ### First Time Setup
 After creating your GitHub repository, set the remote:
 ```bash
-git remote add origin https://github.com/YOUR_USERNAME/master-shredder.git
+git remote add origin https://github.com/YOUR_USERNAME/fit-me.git
 git branch -M main
 ```
 

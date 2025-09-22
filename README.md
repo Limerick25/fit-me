@@ -2,7 +2,7 @@
 
 AI-powered nutrition tracking with conversational food analysis using Claude Sonnet 4. **LIVE & FULLY FUNCTIONAL!** 🌐
 
-**🎉 Try it now: [fit-me.vercel.app](https://fit-me.vercel.app)**
+**🎉 Try it now: [fit-me-nutrition.vercel.app](https://fit-me-nutrition.vercel.app)**
 
 ## 🚀 Features
 
@@ -164,7 +164,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 - [Claude AI Documentation](https://docs.anthropic.com/)
 - [Project Documentation](CLAUDE.md)
 - [GitHub Repository](https://github.com/Limerick25/fit-me)
-- [Live App](https://fit-me.vercel.app) ✅ **LIVE NOW!**
+- [Live App](https://fit-me-nutrition.vercel.app) ✅ **LIVE NOW!**
 
 ---
 
