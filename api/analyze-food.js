@@ -26,7 +26,8 @@ export default async function handler(req, res) {
     // Get Claude API key from environment variables
     // Note: Vercel uses both VITE_ prefixed and non-prefixed vars
     const apiKey = process.env.VITE_CLAUDE_API_KEY || process.env.CLAUDE_API_KEY;
-    const model = process.env.VITE_CLAUDE_MODEL || process.env.CLAUDE_MODEL || 'claude-3-haiku';
+    // Hardcode the working model for now
+    const model = 'claude-3-haiku-20240307';
 
     console.log('Environment check:', {
       hasApiKey: !!apiKey,
