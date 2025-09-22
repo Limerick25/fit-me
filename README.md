@@ -1,6 +1,6 @@
 # 🥗 Master Shredder ⚡
 
-AI-powered nutrition tracking with conversational food analysis using Claude AI.
+AI-powered nutrition tracking with conversational food analysis using Claude AI. **Now LIVE in production!** 🌐
 
 ## 🚀 Features
 
