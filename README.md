@@ -1,4 +1,4 @@
-# 🥗 Master Shredder
+# 🥗 Master Shredder ⚡
 
 AI-powered nutrition tracking with conversational food analysis using Claude AI.
 
