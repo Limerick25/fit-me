@@ -31,7 +31,10 @@ export default async function handler(req, res) {
     console.log('Environment check:', {
       hasApiKey: !!apiKey,
       model: model,
-      rawModel: process.env.VITE_CLAUDE_MODEL
+      rawModel: process.env.VITE_CLAUDE_MODEL,
+      allEnvVars: Object.keys(process.env).filter(key => key.includes('CLAUDE')),
+      apiKeyLength: apiKey?.length,
+      apiKeyPrefix: apiKey?.substring(0, 10) + '...'
     });
 
     if (!apiKey) {
@@ -54,6 +57,24 @@ export default async function handler(req, res) {
     // Build the nutrition analysis prompt
     const prompt = buildNutritionPrompt(userInput, conversationHistory, userProfile);
 
+    // Log the exact request being made
+    const requestBody = {
+      model: model,
+      max_tokens: 2000,
+      messages: [{
+        role: 'user',
+        content: prompt
+      }]
+    };
+
+    console.log('Claude API request:', {
+      url: 'https://api.anthropic.com/v1/messages',
+      model: model,
+      hasApiKey: !!apiKey,
+      apiKeyLength: apiKey?.length,
+      requestBodyModel: requestBody.model
+    });
+
     // Call Claude API
     const claudeResponse = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -62,14 +83,7 @@ export default async function handler(req, res) {
         'x-api-key': apiKey,
         'anthropic-version': '2023-06-01'
       },
-      body: JSON.stringify({
-        model: model,
-        max_tokens: 2000,
-        messages: [{
-          role: 'user',
-          content: prompt
-        }]
-      })
+      body: JSON.stringify(requestBody)
     });
 
     if (!claudeResponse.ok) {
