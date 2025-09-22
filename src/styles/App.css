@@ -37,10 +37,25 @@ body {
   align-items: center;
 }
 
+.app-title-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.app-logo {
+  transition: transform 0.3s ease;
+}
+
+.app-logo:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
 .app-title {
   font-size: 1.8rem;
   font-weight: 600;
   margin: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .date-picker {

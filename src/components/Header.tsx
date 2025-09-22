@@ -1,3 +1,5 @@
+import MasterShredderLogo from './MasterShredderLogo';
+
 interface HeaderProps {
   currentDate: Date;
   onDateChange: (date: Date) => void;
@@ -16,7 +18,10 @@ const Header = ({ currentDate, onDateChange }: HeaderProps) => {
   return (
     <header className="header">
       <div className="header-content">
-        <h1 className="app-title">🥗 Master Shredder</h1>
+        <div className="app-title-container">
+          <MasterShredderLogo size={50} className="app-logo" />
+          <h1 className="app-title">Master Shredder</h1>
+        </div>
         <div className="date-picker">
           <label htmlFor="date-input">Date:</label>
           <input

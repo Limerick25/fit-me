@@ -1,0 +1,47 @@
+<svg width="32" height="32" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="metalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B9DC3;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3A5998;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E3A5F;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE5B4;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#DDB892;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C19A6B;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="eyeGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#FF0000;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="58" fill="#F8F9FA" stroke="#E9ECEF" stroke-width="2"/>
+
+  <!-- Simplified muscular torso -->
+  <g transform="translate(60, 85)">
+    <path d="M-18,-35 Q-20,-30 -18,-25 L-15,-10 Q-12,0 -8,5 L8,5 Q12,0 15,-10 L18,-25 Q20,-30 18,-35 Q15,-40 8,-42 L-8,-42 Q-15,-40 -18,-35 Z"
+          fill="url(#bodyGradient)"/>
+    <!-- Simplified abs -->
+    <ellipse cx="-5" cy="-25" rx="3" ry="4" fill="#C19A6B" opacity="0.7"/>
+    <ellipse cx="5" cy="-25" rx="3" ry="4" fill="#C19A6B" opacity="0.7"/>
+    <!-- Arms -->
+    <ellipse cx="-22" cy="-25" rx="5" ry="12" fill="url(#bodyGradient)"/>
+    <ellipse cx="22" cy="-25" rx="5" ry="12" fill="url(#bodyGradient)"/>
+  </g>
+
+  <!-- Shredder's helmet -->
+  <g transform="translate(60, 45)">
+    <path d="M-20,-25 Q-25,-30 -25,-35 Q-25,-45 -20,-50 Q-10,-55 0,-55 Q10,-55 20,-50 Q25,-45 25,-35 Q25,-30 20,-25 L15,-15 Q10,-10 0,-10 Q-10,-10 -15,-15 Z"
+          fill="url(#metalGradient)"/>
+    <!-- Face mask -->
+    <path d="M-15,-15 Q-10,-20 0,-20 Q10,-20 15,-15 L12,-5 Q8,0 0,0 Q-8,0 -12,-5 Z"
+          fill="#2C3E50" opacity="0.9"/>
+    <!-- Eyes -->
+    <ellipse cx="-6" cy="-12" rx="3" ry="2" fill="url(#eyeGlow)"/>
+    <ellipse cx="6" cy="-12" rx="3" ry="2" fill="url(#eyeGlow)"/>
+    <ellipse cx="-6" cy="-12" rx="1.5" ry="1" fill="#FFFF00" opacity="0.8"/>
+    <ellipse cx="6" cy="-12" rx="1.5" ry="1" fill="#FFFF00" opacity="0.8"/>
+  </g>
+</svg>
