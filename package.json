@@ -17,7 +17,10 @@
     "deploy": "node scripts/deploy.js",
     "deploy-auto": "node scripts/vercel-auto-deploy.js",
     "deploy-prod": "npm run build && vercel --prod",
-    "setup-vercel": "vercel"
+    "setup-vercel": "vercel",
+    "update-model": "node scripts/update-claude-model.js",
+    "update-model-opus": "node scripts/update-claude-model.js opus",
+    "update-model-sonnet": "node scripts/update-claude-model.js sonnet"
   },
   "dependencies": {
     "react": "^18.2.0",
