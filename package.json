@@ -20,7 +20,8 @@
     "setup-vercel": "vercel",
     "update-model": "node scripts/update-claude-model.js",
     "update-model-opus": "node scripts/update-claude-model.js opus",
-    "update-model-sonnet": "node scripts/update-claude-model.js sonnet"
+    "update-model-sonnet": "node scripts/update-claude-model.js sonnet",
+    "test-models": "node scripts/test-models.js"
   },
   "dependencies": {
     "react": "^18.2.0",
