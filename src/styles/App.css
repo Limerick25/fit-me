@@ -491,7 +491,7 @@ body {
   }
 
   .main-content {
-    padding: var(--spacing-lg);
+    padding: 0;
   }
 
   .nutrition-grid {
