@@ -2,7 +2,7 @@
 
 AI-powered nutrition tracking with conversational food analysis using Claude Sonnet 4. **LIVE & FULLY FUNCTIONAL!** 🌐
 
-**🎉 Try it now: [fit-me-nutrition.vercel.app](https://fit-me-nutrition.vercel.app)**
+**🎉 Try it now: [fit-me-nutrition.vercel.app](https://fit-me-nutrition.vercel.app)** - *Visual overhaul complete!*
 
 ## 🚀 Features
 
