@@ -636,17 +636,15 @@ body {
   border-radius: 2px;
 }
 
-/* Chat Container */
+/* Chat Container - Mobile-First Full Width */
 .chat-container {
   background: var(--card-bg);
   border-radius: var(--radius-xl);
   padding: var(--spacing-xl);
-  margin: var(--spacing-xl);
+  margin: var(--spacing-md);
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--card-border);
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  width: calc(100% - 2 * var(--spacing-md));
 }
 
 /* Mobile-First Full-screen Nutrition Chat - Consistent Width */
@@ -668,8 +666,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  max-width: 100%;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
 }
 
 .nutrition-chat-modal .chat-header {
@@ -1023,17 +1021,15 @@ body {
   color: var(--text-secondary);
 }
 
-/* Edit Container */
+/* Edit Container - Mobile-First Full Width */
 .edit-container {
   background: var(--card-bg);
   border-radius: var(--radius-xl);
   padding: var(--spacing-xl);
-  margin: var(--spacing-xl);
+  margin: var(--spacing-md);
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--card-border);
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  width: calc(100% - 2 * var(--spacing-md));
 }
 
 .edit-header {
