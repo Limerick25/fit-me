@@ -98,7 +98,7 @@ const FitnessDashboard = ({ nutrition }: FitnessDashboardProps) => {
             color: isOverGoal ? 'var(--accent-red)' : 'var(--text-muted)',
             marginTop: '2px'
           }}>
-            {isOverGoal ? 'Over' : Math.round(percentage)}%} of {goal}{unit}
+            {isOverGoal ? 'Over' : `${Math.round(percentage)}%`} of {goal}{unit}
           </div>
         )}
       </div>
