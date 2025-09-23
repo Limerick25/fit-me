@@ -97,21 +97,11 @@ function App() {
       case 'add-food':
         return (
           <ErrorBoundary>
-            <div className="chat-container">
-              <div className="chat-header">
-                <h2>Add Food Entry</h2>
-                <button
-                  className="close-btn"
-                  onClick={() => setCurrentView('dashboard')}
-                >
-                  ✕
-                </button>
-              </div>
-              <NutritionChatProduction
-                onMealConfirmed={handleMealConfirmed}
-                onClose={() => setCurrentView('dashboard')}
-              />
-            </div>
+            <NutritionChatProduction
+              mealType="snacks"
+              onMealConfirmed={handleMealConfirmed}
+              onCancel={() => setCurrentView('dashboard')}
+            />
           </ErrorBoundary>
         );
 
