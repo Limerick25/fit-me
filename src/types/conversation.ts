@@ -13,19 +13,27 @@ export interface ConversationMessage {
 export interface ParsedMeal {
   id: string;
   name: string;
-  description: string;
-  ingredients: MealIngredient[];
-  totalNutrition: {
-    calories: number;
-    protein: number;
-    carbs: number;
-    fats: number;
-    fiber?: number;
-    sugar?: number;
-    sodium?: number;
-  };
-  confidence: number;
-  inferredDetails: string[];
+  description?: string;
+  ingredients?: MealIngredient[];
+  calories: number;
+  protein: number;
+  carbs: number;
+  fats: number;
+  fiber?: number;
+  sodium?: number;
+  sugar?: number;
+  saturatedFat?: number;
+  cholesterol?: number;
+  potassium?: number;
+  vitaminC?: number;
+  iron?: number;
+  calcium?: number;
+  vitaminA?: number;
+  quantity?: number;
+  unit?: string;
+  confidence?: number;
+  assumptions?: string[];
+  sources?: Array<{ name: string; url?: string; note?: string }>;
   questions?: string[];
 }
 

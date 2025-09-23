@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
-import { DailyMeals, FoodEntry, MealType } from './types/nutrition';
+import { DailyMeals, FoodEntry, DailyNutrition } from './types/nutrition';
 import { ParsedMeal } from './types/conversation';
 import { getStoredMeals, addFoodEntry, removeFoodEntry, updateFoodEntry } from './utils/storage';
 import { calculateDailyNutrition, formatDate, generateId } from './utils/calculations';
 import Header from './components/Header';
-import Dashboard from './components/Dashboard';
-import MealSection from './components/MealSection';
+import FitnessDashboard from './components/FitnessDashboard';
+import FitnessActions from './components/FitnessActions';
+import MealHistory from './components/MealHistory';
 import NutritionChatProduction from './components/NutritionChatProduction';
 import ErrorBoundary from './components/ErrorBoundary';
 import './styles/App.css';
+
+type ViewState = 'dashboard' | 'add-food' | 'view-food' | 'edit-entry';
 
 function App() {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
@@ -18,10 +21,8 @@ function App() {
     dinner: [],
     snacks: []
   });
-  const [showMealEntry, setShowMealEntry] = useState<{
-    show: boolean;
-    mealType: MealType | null;
-  }>({ show: false, mealType: null });
+  const [currentView, setCurrentView] = useState<ViewState>('dashboard');
+  const [editingEntryId, setEditingEntryId] = useState<string | null>(null);
 
   const dateString = formatDate(currentDate);
 
@@ -30,121 +31,154 @@ function App() {
     setMeals(storedMeals);
   }, [dateString]);
 
-  const handleMealConfirmed = (mealType: MealType, parsedMeal: ParsedMeal) => {
-    // Convert ParsedMeal ingredients to FoodEntry objects and add them
-    parsedMeal.ingredients.forEach(ingredient => {
-      const foodEntry: FoodEntry = {
-        id: generateId(),
-        name: ingredient.name,
-        quantity: ingredient.amount,
-        unit: ingredient.unit,
-        nutrition: ingredient.nutrition,
-        timestamp: new Date()
-      };
-      addFoodEntry(dateString, mealType, foodEntry);
-    });
+  // Calculate daily nutrition totals
+  const dailyNutrition: DailyNutrition = calculateDailyNutrition(meals);
 
-    const updatedMeals = getStoredMeals(dateString);
+  // Get total number of meal entries
+  const totalMealEntries = Object.values(meals).flat().length;
+
+  const handleMealConfirmed = (parsedMeal: ParsedMeal) => {
+    const foodEntry: FoodEntry = {
+      id: generateId(),
+      name: parsedMeal.name,
+      calories: parsedMeal.calories,
+      protein: parsedMeal.protein,
+      carbs: parsedMeal.carbs,
+      fats: parsedMeal.fats,
+      fiber: parsedMeal.fiber,
+      sodium: parsedMeal.sodium,
+      sugar: parsedMeal.sugar,
+      saturatedFat: parsedMeal.saturatedFat,
+      cholesterol: parsedMeal.cholesterol,
+      potassium: parsedMeal.potassium,
+      vitaminC: parsedMeal.vitaminC,
+      iron: parsedMeal.iron,
+      calcium: parsedMeal.calcium,
+      vitaminA: parsedMeal.vitaminA,
+      quantity: parsedMeal.quantity,
+      unit: parsedMeal.unit,
+      timestamp: new Date().toISOString(),
+      assumptions: parsedMeal.assumptions,
+      sources: parsedMeal.sources,
+      confidence: parsedMeal.confidence
+    };
+
+    // Default to snacks if no specific meal type chosen
+    const mealType = 'snacks';
+    const updatedMeals = addFoodEntry(meals, mealType, foodEntry, dateString);
     setMeals(updatedMeals);
-    setShowMealEntry({ show: false, mealType: null });
+    setCurrentView('dashboard');
   };
 
-  const handleDateChange = (date: Date) => {
-    setCurrentDate(date);
-  };
-
-  const openMealEntry = (mealType: MealType) => {
-    setShowMealEntry({ show: true, mealType });
-  };
-
-  const closeMealEntry = () => {
-    setShowMealEntry({ show: false, mealType: null });
-  };
-
-  const handleDeleteEntry = (mealType: MealType, entryId: string) => {
-    removeFoodEntry(dateString, mealType, entryId);
-    const updatedMeals = getStoredMeals(dateString);
+  const handleDeleteEntry = (entryId: string) => {
+    const updatedMeals = removeFoodEntry(meals, entryId, dateString);
     setMeals(updatedMeals);
   };
 
-  const handleUpdateEntry = (mealType: MealType, entryId: string, updatedEntry: Partial<FoodEntry>) => {
-    updateFoodEntry(dateString, mealType, entryId, updatedEntry);
-    const updatedMeals = getStoredMeals(dateString);
-    setMeals(updatedMeals);
+  const handleEditEntry = (entryId: string) => {
+    setEditingEntryId(entryId);
+    setCurrentView('edit-entry');
   };
 
-  const dailyNutrition = calculateDailyNutrition(meals, dateString);
+  const handleUpdateEntry = (updatedEntry: FoodEntry) => {
+    const updatedMeals = updateFoodEntry(meals, updatedEntry, dateString);
+    setMeals(updatedMeals);
+    setEditingEntryId(null);
+    setCurrentView('view-food');
+  };
+
+  const handleDateChange = (newDate: Date) => {
+    setCurrentDate(newDate);
+    setCurrentView('dashboard'); // Return to dashboard when changing dates
+  };
+
+  const renderCurrentView = () => {
+    switch (currentView) {
+      case 'add-food':
+        return (
+          <ErrorBoundary>
+            <div className="chat-container">
+              <div className="chat-header">
+                <h2>Add Food Entry</h2>
+                <button
+                  className="close-btn"
+                  onClick={() => setCurrentView('dashboard')}
+                >
+                  ✕
+                </button>
+              </div>
+              <NutritionChatProduction
+                onMealConfirmed={handleMealConfirmed}
+                onClose={() => setCurrentView('dashboard')}
+              />
+            </div>
+          </ErrorBoundary>
+        );
+
+      case 'view-food':
+        return (
+          <MealHistory
+            meals={meals}
+            onEditEntry={handleEditEntry}
+            onDeleteEntry={handleDeleteEntry}
+            onClose={() => setCurrentView('dashboard')}
+          />
+        );
+
+      case 'edit-entry':
+        // Find the entry being edited
+        const entryToEdit = Object.values(meals)
+          .flat()
+          .find(entry => entry.id === editingEntryId);
+
+        if (!entryToEdit) {
+          setCurrentView('dashboard');
+          return null;
+        }
+
+        return (
+          <div className="edit-container">
+            <div className="edit-header">
+              <h2>Edit Food Entry</h2>
+              <button
+                className="close-btn"
+                onClick={() => setCurrentView('view-food')}
+              >
+                ✕
+              </button>
+            </div>
+            {/* Edit form would go here - for now, just show a placeholder */}
+            <div className="edit-form">
+              <p>Edit functionality coming soon...</p>
+              <p>Entry: {entryToEdit.name}</p>
+              <button onClick={() => setCurrentView('view-food')}>
+                Back to Food List
+              </button>
+            </div>
+          </div>
+        );
+
+      default:
+        return (
+          <div className="main-content">
+            <FitnessDashboard nutrition={dailyNutrition} />
+            <FitnessActions
+              onAddFood={() => setCurrentView('add-food')}
+              onViewFood={() => setCurrentView('view-food')}
+              totalMeals={totalMealEntries}
+            />
+          </div>
+        );
+    }
+  };
 
   return (
     <div className="app">
-      <Header currentDate={currentDate} onDateChange={handleDateChange} />
-
-      <main className="main-content">
-        <Dashboard nutrition={dailyNutrition} />
-
-        <div className="meals-container">
-          <MealSection
-            title="Breakfast"
-            mealType="breakfast"
-            entries={meals.breakfast}
-            onAddFood={() => openMealEntry('breakfast')}
-            onDeleteEntry={(entryId) => handleDeleteEntry('breakfast', entryId)}
-            onUpdateEntry={(entryId, updatedEntry) => handleUpdateEntry('breakfast', entryId, updatedEntry)}
-          />
-
-          <MealSection
-            title="Lunch"
-            mealType="lunch"
-            entries={meals.lunch}
-            onAddFood={() => openMealEntry('lunch')}
-            onDeleteEntry={(entryId) => handleDeleteEntry('lunch', entryId)}
-            onUpdateEntry={(entryId, updatedEntry) => handleUpdateEntry('lunch', entryId, updatedEntry)}
-          />
-
-          <MealSection
-            title="Dinner"
-            mealType="dinner"
-            entries={meals.dinner}
-            onAddFood={() => openMealEntry('dinner')}
-            onDeleteEntry={(entryId) => handleDeleteEntry('dinner', entryId)}
-            onUpdateEntry={(entryId, updatedEntry) => handleUpdateEntry('dinner', entryId, updatedEntry)}
-          />
-
-          <MealSection
-            title="Snacks"
-            mealType="snacks"
-            entries={meals.snacks}
-            onAddFood={() => openMealEntry('snacks')}
-            onDeleteEntry={(entryId) => handleDeleteEntry('snacks', entryId)}
-            onUpdateEntry={(entryId, updatedEntry) => handleUpdateEntry('snacks', entryId, updatedEntry)}
-          />
-        </div>
-      </main>
-
-      {showMealEntry.show && showMealEntry.mealType && (
-        <ErrorBoundary fallback={
-          <div className="meal-entry-overlay">
-            <div className="meal-entry-modal">
-              <div className="modal-header">
-                <h2>Error Loading Chat</h2>
-                <button className="close-btn" onClick={closeMealEntry}>×</button>
-              </div>
-              <div style={{ padding: '2rem', textAlign: 'center' }}>
-                <p>Sorry, there was an error loading the nutrition chat.</p>
-                <button onClick={closeMealEntry} className="save-btn">
-                  Close and Try Again
-                </button>
-              </div>
-            </div>
-          </div>
-        }>
-          <NutritionChatProduction
-            mealType={showMealEntry.mealType}
-            onMealConfirmed={(meal) => handleMealConfirmed(showMealEntry.mealType!, meal)}
-            onCancel={closeMealEntry}
-          />
-        </ErrorBoundary>
-      )}
+      <Header
+        currentDate={currentDate}
+        onDateChange={handleDateChange}
+      />
+      {renderCurrentView()}
     </div>
   );
 }

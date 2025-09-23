@@ -1,18 +1,6 @@
-import { DailyMeals, DailyNutritionSummary, FoodEntry } from '../types/nutrition';
+import { DailyMeals, DailyNutrition, FoodEntry } from '../types/nutrition';
 
-export const calculateMealNutrition = (entries: FoodEntry[]) => {
-  return entries.reduce(
-    (totals, entry) => ({
-      calories: totals.calories + entry.nutrition.calories,
-      protein: totals.protein + entry.nutrition.protein,
-      carbs: totals.carbs + entry.nutrition.carbs,
-      fats: totals.fats + entry.nutrition.fats
-    }),
-    { calories: 0, protein: 0, carbs: 0, fats: 0 }
-  );
-};
-
-export const calculateDailyNutrition = (meals: DailyMeals, date: string): DailyNutritionSummary => {
+export const calculateDailyNutrition = (meals: DailyMeals): DailyNutrition => {
   const allEntries = [
     ...meals.breakfast,
     ...meals.lunch,
@@ -20,15 +8,40 @@ export const calculateDailyNutrition = (meals: DailyMeals, date: string): DailyN
     ...meals.snacks
   ];
 
-  const totals = calculateMealNutrition(allEntries);
-
-  return {
-    totalCalories: Math.round(totals.calories),
-    totalProtein: Math.round(totals.protein * 10) / 10,
-    totalCarbs: Math.round(totals.carbs * 10) / 10,
-    totalFats: Math.round(totals.fats * 10) / 10,
-    date
-  };
+  return allEntries.reduce(
+    (totals, entry) => ({
+      calories: totals.calories + (entry.calories || 0),
+      protein: totals.protein + (entry.protein || 0),
+      carbs: totals.carbs + (entry.carbs || 0),
+      fats: totals.fats + (entry.fats || 0),
+      fiber: totals.fiber + (entry.fiber || 0),
+      sodium: totals.sodium + (entry.sodium || 0),
+      sugar: totals.sugar + (entry.sugar || 0),
+      saturatedFat: totals.saturatedFat + (entry.saturatedFat || 0),
+      cholesterol: totals.cholesterol + (entry.cholesterol || 0),
+      potassium: totals.potassium + (entry.potassium || 0),
+      vitaminC: totals.vitaminC + (entry.vitaminC || 0),
+      iron: totals.iron + (entry.iron || 0),
+      calcium: totals.calcium + (entry.calcium || 0),
+      vitaminA: totals.vitaminA + (entry.vitaminA || 0)
+    }),
+    {
+      calories: 0,
+      protein: 0,
+      carbs: 0,
+      fats: 0,
+      fiber: 0,
+      sodium: 0,
+      sugar: 0,
+      saturatedFat: 0,
+      cholesterol: 0,
+      potassium: 0,
+      vitaminC: 0,
+      iron: 0,
+      calcium: 0,
+      vitaminA: 0
+    }
+  );
 };
 
 export const formatDate = (date: Date): string => {
