@@ -59,6 +59,12 @@ export class ClaudeNutritionServiceProduction {
         const errorData = await response.json().catch(() => ({}));
         console.error('❌ API Error:', response.status, errorData);
 
+        // In development, if API not available, provide mock response
+        if (response.status === 404 && !import.meta.env.PROD) {
+          console.log('🔧 Using mock response for development');
+          return this.generateMockResponse(userInput);
+        }
+
         throw new Error(
           errorData.details ||
           errorData.error ||
@@ -97,5 +103,59 @@ export class ClaudeNutritionServiceProduction {
     // In production, we assume the backend is properly configured
     // The API endpoint will return appropriate errors if not
     return true;
+  }
+
+  private generateMockResponse(userInput: string): NutritionAnalysis {
+    // Generate realistic mock data based on common foods
+    const mockData = this.getMockDataForFood(userInput.toLowerCase());
+
+    return {
+      response: `I analyzed your "${userInput}" - here's my nutritional breakdown. This is a mock response for development since the Claude API isn't available locally.`,
+      meal: {
+        name: userInput,
+        calories: mockData.calories,
+        protein: mockData.protein,
+        carbs: mockData.carbs,
+        fats: mockData.fats,
+        confidence: 0.85,
+        assumptions: [
+          `Estimated ${mockData.portion} portion size`,
+          `Standard cooking method assumed`,
+          `No additional oils or seasonings estimated`
+        ],
+        ingredients: [
+          {
+            name: userInput,
+            amount: 1,
+            unit: 'serving',
+            nutrition: {
+              calories: mockData.calories,
+              protein: mockData.protein,
+              carbs: mockData.carbs,
+              fats: mockData.fats
+            },
+            inferred: true
+          }
+        ]
+      }
+    };
+  }
+
+  private getMockDataForFood(food: string): { calories: number; protein: number; carbs: number; fats: number; portion: string } {
+    // Simple keyword matching for common foods
+    if (food.includes('chicken') || food.includes('grilled chicken')) {
+      return { calories: 380, protein: 42, carbs: 35, fats: 8, portion: '4oz chicken + 1 cup rice' };
+    }
+    if (food.includes('rice')) {
+      return { calories: 320, protein: 28, carbs: 45, fats: 6, portion: '1 cup cooked rice + protein' };
+    }
+    if (food.includes('salad')) {
+      return { calories: 150, protein: 8, carbs: 12, fats: 9, portion: 'medium bowl' };
+    }
+    if (food.includes('egg')) {
+      return { calories: 280, protein: 20, carbs: 2, fats: 22, portion: '2 large eggs' };
+    }
+    // Default for any unrecognized food
+    return { calories: 250, protein: 15, carbs: 30, fats: 8, portion: 'medium' };
   }
 }
