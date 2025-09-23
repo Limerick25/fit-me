@@ -176,18 +176,19 @@ body {
 .main-content {
   flex: 1;
   width: 100%;
-  padding: var(--spacing-md);
+  padding: 0;
   min-height: calc(100vh - 60px);
 }
 
 /* Mobile-Optimized Dashboard */
 .dashboard {
   background: var(--card-bg);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   padding: var(--spacing-md);
-  margin-bottom: var(--spacing-md);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--card-border);
+  margin-bottom: 0;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid var(--card-border);
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -320,12 +321,15 @@ body {
   letter-spacing: 0.05em;
 }
 
-/* Action Buttons */
+/* Action Buttons - Full Width */
 .action-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-xl);
+  gap: var(--spacing-sm);
+  margin: 0;
+  padding: var(--spacing-md);
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--card-border);
 }
 
 .action-btn {
