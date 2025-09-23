@@ -38,6 +38,7 @@ function App() {
   const totalMealEntries = Object.values(meals).flat().length;
 
   const handleMealConfirmed = (parsedMeal: ParsedMeal) => {
+    console.log('📥 App received meal confirmation:', parsedMeal);
     const foodEntry: FoodEntry = {
       id: generateId(),
       name: parsedMeal.name,
@@ -66,7 +67,9 @@ function App() {
     // Default to snacks if no specific meal type chosen
     const mealType = 'snacks';
     const updatedMeals = addFoodEntry(meals, mealType, foodEntry, dateString);
+    console.log('💾 Updated meals:', updatedMeals);
     setMeals(updatedMeals);
+    console.log('🏠 Setting view to dashboard');
     setCurrentView('dashboard');
   };
 

@@ -145,8 +145,12 @@ const NutritionChatProduction = ({ mealType, onMealConfirmed, onCancel }: Nutrit
   };
 
   const handleConfirmMeal = () => {
+    console.log('🍽️ Confirming meal:', suggestedMeal);
     if (suggestedMeal) {
+      console.log('✅ Calling onMealConfirmed with:', suggestedMeal);
       onMealConfirmed(suggestedMeal);
+    } else {
+      console.error('❌ No suggestedMeal available');
     }
   };
 
