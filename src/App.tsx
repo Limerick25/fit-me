@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { DailyMeals, FoodEntry, DailyNutrition } from './types/nutrition';
 import { ParsedMeal } from './types/conversation';
-import { getStoredMeals, addFoodEntry, removeFoodEntry, updateFoodEntry } from './utils/storage';
+import { getStoredMeals, addFoodEntry, removeFoodEntryAndGetMeals, updateFoodEntryAndGetMeals } from './utils/storage';
 import { calculateDailyNutrition, formatDate, generateId } from './utils/calculations';
 import Header from './components/Header';
 import FitnessDashboard from './components/FitnessDashboard';
@@ -66,7 +66,10 @@ function App() {
 
     // Default to snacks if no specific meal type chosen
     const mealType = 'snacks';
-    const updatedMeals = addFoodEntry(meals, mealType, foodEntry, dateString);
+    addFoodEntry(dateString, mealType, foodEntry);
+
+    // Reload meals from storage to get updated state
+    const updatedMeals = getStoredMeals(dateString);
     console.log('💾 Updated meals:', updatedMeals);
     setMeals(updatedMeals);
     console.log('🏠 Setting view to dashboard');
@@ -74,7 +77,7 @@ function App() {
   };
 
   const handleDeleteEntry = (entryId: string) => {
-    const updatedMeals = removeFoodEntry(meals, entryId, dateString);
+    const updatedMeals = removeFoodEntryAndGetMeals(meals, entryId, dateString);
     setMeals(updatedMeals);
   };
 
@@ -84,7 +87,7 @@ function App() {
   };
 
   const handleUpdateEntry = (updatedEntry: FoodEntry) => {
-    const updatedMeals = updateFoodEntry(meals, updatedEntry, dateString);
+    const updatedMeals = updateFoodEntryAndGetMeals(meals, updatedEntry, dateString);
     setMeals(updatedMeals);
     setEditingEntryId(null);
     setCurrentView('view-food');

@@ -66,3 +66,28 @@ export const updateFoodEntry = (date: string, mealType: keyof DailyMeals, entryI
     storeMeals(date, meals);
   }
 };
+
+// Helper functions that return updated meals (for App.tsx compatibility)
+export const removeFoodEntryAndGetMeals = (meals: DailyMeals, entryId: string, date: string): DailyMeals => {
+  // Find which meal type contains this entry and remove it
+  const updatedMeals = { ...meals };
+  for (const mealType of ['breakfast', 'lunch', 'dinner', 'snacks'] as (keyof DailyMeals)[]) {
+    updatedMeals[mealType] = meals[mealType].filter(entry => entry.id !== entryId);
+  }
+  storeMeals(date, updatedMeals);
+  return updatedMeals;
+};
+
+export const updateFoodEntryAndGetMeals = (meals: DailyMeals, updatedEntry: FoodEntry, date: string): DailyMeals => {
+  const updatedMeals = { ...meals };
+  // Find which meal type contains this entry and update it
+  for (const mealType of ['breakfast', 'lunch', 'dinner', 'snacks'] as (keyof DailyMeals)[]) {
+    const entryIndex = meals[mealType].findIndex(entry => entry.id === updatedEntry.id);
+    if (entryIndex !== -1) {
+      updatedMeals[mealType][entryIndex] = updatedEntry;
+      break;
+    }
+  }
+  storeMeals(date, updatedMeals);
+  return updatedMeals;
+};
