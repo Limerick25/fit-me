@@ -49,14 +49,8 @@ const NutritionChatProduction = ({ mealType, onMealConfirmed, onCancel }: Nutrit
   const [claudeService] = useState(() => new ClaudeNutritionServiceProduction());
 
   useEffect(() => {
-    // Initialize with simple prompt
-    const initialMessage: ChatMessage = {
-      id: Date.now().toString(),
-      role: 'assistant',
-      content: `What did you eat for ${mealType}?`,
-      timestamp: new Date()
-    };
-    setMessages([initialMessage]);
+    // Start with empty messages for clean interface
+    setMessages([]);
     setApiStatus('ready');
   }, [mealType]);
 
@@ -164,13 +158,13 @@ const NutritionChatProduction = ({ mealType, onMealConfirmed, onCancel }: Nutrit
     <div className="nutrition-chat-overlay">
       <div className="nutrition-chat-modal">
         <div className="chat-header">
-          <h2>🤖 Master Shredder - {mealType.charAt(0).toUpperCase() + mealType.slice(1)}</h2>
+          <h2>Add Food Entry</h2>
           <div className="api-status">
             {apiStatus === 'checking' && (
               <span className="status-checking">🔄 Connecting...</span>
             )}
             {apiStatus === 'ready' && (
-              <span className="status-good">✅ Claude AI Ready</span>
+              <span className="status-good">Powered by Claude Sonnet 4</span>
             )}
             {apiStatus === 'error' && (
               <span className="status-error">❌ Connection Issue</span>
@@ -357,7 +351,7 @@ const NutritionChatProduction = ({ mealType, onMealConfirmed, onCancel }: Nutrit
               value={currentInput}
               onChange={(e) => setCurrentInput(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder="Describe what you ate... Claude will analyze it expertly!"
+              placeholder="describe what you ate..."
               rows={2}
               disabled={isLoading}
             />
