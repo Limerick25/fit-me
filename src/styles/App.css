@@ -392,13 +392,16 @@ body {
   font-weight: 400;
 }
 
-/* Meal History/View Section */
+/* Meal History/View Section - Full Width */
 .meal-history {
   background: var(--card-bg);
-  border-radius: var(--radius-xl);
-  padding: var(--spacing-xl);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--card-border);
+  border-radius: 0;
+  padding: var(--spacing-md);
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid var(--card-border);
+  width: 100%;
+  min-height: calc(100vh - 60px);
 }
 
 .meal-history-title {
