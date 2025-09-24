@@ -63,7 +63,6 @@ const MealHistory = ({ meals, onEditEntry, onDeleteEntry, onClose }: MealHistory
     return (
       <div className="meal-history">
         <div className="meal-history-header">
-          <h2 className="meal-history-title">Today's Meals</h2>
           <button className="close-btn" onClick={onClose}>✕</button>
         </div>
         <div className="empty-state">
@@ -78,7 +77,6 @@ const MealHistory = ({ meals, onEditEntry, onDeleteEntry, onClose }: MealHistory
   return (
     <div className="meal-history">
       <div className="meal-history-header">
-        <h2 className="meal-history-title">Today's Meals</h2>
         <button className="close-btn" onClick={onClose}>✕</button>
       </div>
 

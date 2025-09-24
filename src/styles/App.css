@@ -694,7 +694,7 @@ body {
 /* Mobile-First Full-screen Nutrition Chat - Consistent Width */
 .nutrition-chat-overlay {
   position: fixed;
-  top: 0;
+  top: 50px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -702,7 +702,7 @@ body {
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - 50px);
 }
 
 .nutrition-chat-modal {

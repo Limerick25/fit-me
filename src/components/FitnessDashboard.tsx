@@ -107,8 +107,6 @@ const FitnessDashboard = ({ nutrition }: FitnessDashboardProps) => {
 
   return (
     <div className="dashboard">
-      <h2 className="dashboard-title">Today's Nutrition</h2>
-
       {/* Primary Macros Grid */}
       <div className="nutrition-grid">
         <MacroCard
