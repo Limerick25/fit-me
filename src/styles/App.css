@@ -693,13 +693,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: 10px var(--spacing-md) !important;
   border-bottom: 1px solid var(--card-border);
-  background: var(--card-bg);
+  background: red !important;
   position: sticky;
   top: 0;
   z-index: 10;
-  min-height: 50px;
+  min-height: 30px !important;
 }
 
 .nutrition-chat-modal .chat-header h2 {
