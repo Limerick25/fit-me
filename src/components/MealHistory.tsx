@@ -63,6 +63,7 @@ const MealHistory = ({ meals, onEditEntry, onDeleteEntry, onClose }: MealHistory
     return (
       <div className="meal-history">
         <div className="meal-history-header">
+          {/* Force fresh build - no title banner */}
           <button className="close-btn" onClick={onClose}>✕</button>
         </div>
         <div className="empty-state">
