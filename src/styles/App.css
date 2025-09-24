@@ -97,12 +97,12 @@ body {
 .header {
   background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
   color: white;
-  padding: var(--spacing-xs) var(--spacing-md);
+  padding: var(--spacing-xs) 0;
   box-shadow: var(--shadow-md);
   position: sticky;
   top: 0;
-  z-index: 100;
-  width: 100%;
+  z-index: 1100;
+  width: 100vw;
   min-height: 50px;
 }
 
@@ -113,6 +113,7 @@ body {
   align-items: center;
   position: relative;
   z-index: 1;
+  padding: 0 var(--spacing-md);
 }
 
 .app-title-container {
