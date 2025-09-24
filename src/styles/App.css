@@ -693,7 +693,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-sm) var(--spacing-md) !important;
+  padding: 12px var(--spacing-md) 12px var(--spacing-md) !important;
   border-bottom: 1px solid var(--card-border);
   background: var(--card-bg) !important;
   position: sticky;
@@ -706,14 +706,18 @@ body {
   color: var(--text-primary);
   font-size: 1.5rem;
   font-weight: 700;
-  margin: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
 }
 
 .api-status {
   display: flex;
   align-items: center;
   font-size: 0.9rem;
-  margin: 0 var(--spacing-lg);
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
 }
 
 .status-good {
