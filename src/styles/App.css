@@ -93,17 +93,17 @@ body {
   position: relative;
 }
 
-/* Header - Mobile-First iPhone Style */
+/* Header - Compact Mobile-First Style */
 .header {
   background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
   color: white;
-  padding: var(--spacing-md) var(--spacing-md);
-  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-xs) var(--spacing-md);
+  box-shadow: var(--shadow-md);
   position: sticky;
   top: 0;
   z-index: 100;
   width: 100%;
-  min-height: 60px;
+  min-height: 50px;
 }
 
 .header-content {
@@ -122,9 +122,9 @@ body {
 }
 
 .app-logo {
-  font-size: 3rem;
+  font-size: 2rem;
   transition: transform 0.3s ease;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 .app-logo:hover {
@@ -132,10 +132,10 @@ body {
 }
 
 .app-title {
-  font-size: 2.5rem;
-  font-weight: 800;
+  font-size: 1.8rem;
+  font-weight: 700;
   margin: 0;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   letter-spacing: -0.02em;
 }
 
@@ -169,6 +169,39 @@ body {
   outline: none;
   box-shadow: 0 0 0 2px var(--primary-yellow);
   transform: scale(1.02);
+}
+
+/* Date Controls Container */
+.date-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* Today Button */
+.today-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.today-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.today-btn.active {
+  background: var(--primary-yellow);
+  color: var(--bg-primary);
+  border-color: var(--primary-yellow);
+  font-weight: 700;
 }
 
 /* Main Content Container */
@@ -485,11 +518,11 @@ body {
   }
 
   .app-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .app-logo {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
   }
 
   .main-content {

@@ -13,6 +13,15 @@ const Header = ({ currentDate, onDateChange }: HeaderProps) => {
     onDateChange(newDate);
   };
 
+  const handleTodayClick = () => {
+    onDateChange(new Date());
+  };
+
+  const isToday = (date: Date): boolean => {
+    const today = new Date();
+    return date.toDateString() === today.toDateString();
+  };
+
   return (
     <header className="header">
       <div className="header-content">
@@ -22,13 +31,22 @@ const Header = ({ currentDate, onDateChange }: HeaderProps) => {
         </div>
         <div className="date-picker">
           <label htmlFor="date-input">Date:</label>
-          <input
-            id="date-input"
-            type="date"
-            value={formatDateForInput(currentDate)}
-            onChange={handleDateChange}
-            className="date-input"
-          />
+          <div className="date-controls">
+            <input
+              id="date-input"
+              type="date"
+              value={formatDateForInput(currentDate)}
+              onChange={handleDateChange}
+              className="date-input"
+            />
+            <button
+              onClick={handleTodayClick}
+              className={`today-btn ${isToday(currentDate) ? 'active' : ''}`}
+              type="button"
+            >
+              Today
+            </button>
+          </div>
         </div>
       </div>
     </header>
