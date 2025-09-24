@@ -1,9 +1,13 @@
+export type ViewMode = 'day' | 'week' | 'month';
+
 interface HeaderProps {
   currentDate: Date;
   onDateChange: (date: Date) => void;
+  viewMode?: ViewMode;
+  onViewModeChange?: (mode: ViewMode) => void;
 }
 
-const Header = ({ currentDate, onDateChange }: HeaderProps) => {
+const Header = ({ currentDate, onDateChange, viewMode = 'day', onViewModeChange }: HeaderProps) => {
   const formatDateForInput = (date: Date): string => {
     return date.toISOString().split('T')[0];
   };
