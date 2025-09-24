@@ -238,20 +238,7 @@ body {
   background: linear-gradient(90deg, var(--primary-green), var(--primary-orange), var(--primary-yellow));
 }
 
-.dashboard-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: var(--spacing-lg);
-  color: var(--text-primary);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-}
-
-.dashboard-title::before {
-  content: '📊';
-  font-size: 1.2rem;
-}
+/* Removed .dashboard-title styles - title no longer exists */
 
 /* Mobile-First Nutrition Grid */
 .nutrition-grid {
@@ -439,20 +426,7 @@ body {
   min-height: calc(100vh - 60px);
 }
 
-.meal-history-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: var(--spacing-lg);
-  color: var(--text-primary);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-}
-
-.meal-history-title::before {
-  content: '🍽️';
-  font-size: 1.2rem;
-}
+/* Removed .meal-history-title styles - title no longer exists */
 
 .meal-item {
   background: var(--bg-secondary);
